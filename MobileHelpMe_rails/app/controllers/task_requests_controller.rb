@@ -1,0 +1,2 @@
+class TaskRequestsController < ApplicationController
+end
