@@ -1,5 +1,11 @@
 MobileHelpMeRails::Application.routes.draw do
 
+  # intended for web-based admin console
+  namespace :admin do
+    resources :categories
+  end
+
+  # intended for JSON output via REST calls
   resources :task_requests, :except => [:new, :edit, :destroy]
   resources :users        , :except => [:new, :edit, :destroy] do
     resources :payments
