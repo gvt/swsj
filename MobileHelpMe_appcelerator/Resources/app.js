@@ -3,7 +3,7 @@ var App = {
     
     start: function()
     {
-        Ti.include("app/signin.js");
+        Ti.include("app/controllers/signin.js");
     },
 
     tests_enabled: false,

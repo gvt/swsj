@@ -3,9 +3,9 @@
 	// To learn how to write Jasmine tests, please read Jasmine documentation:
 	// https://github.com/pivotal/jasmine/wiki
 
-	Ti.include('/app/signin.js');
+	Ti.include('/app/controllers/signin.js');
 	
-	describe('app/signin.js', function() {
+	describe('signin.js', function() {
 
         it("creates a window", function() {
             expect(win).not.toBeNull();

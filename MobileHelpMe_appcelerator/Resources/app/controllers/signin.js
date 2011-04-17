@@ -1,4 +1,4 @@
-Ti.include("app/activity_indicator.js");
+Ti.include("/app/controllers/activity_indicator.js");
 
 //
 // create base UI tab and root window
@@ -41,7 +41,7 @@ var scr1_button_twitter = Titanium.UI.createButton({
     height:24,
     width:151,
     top:240,
-    backgroundImage:"sign-in-with-twitter-light.png" // dimensions of img 385x65. could use this: http://blog.140proof.com/post/569779156/scalable-sign-in-button
+    backgroundImage:"iphone/sign-in-with-twitter.png" // dimensions of img 385x65. could use this: http://blog.140proof.com/post/569779156/scalable-sign-in-button
 });
 scr1_button_twitter.addEventListener('click', function() {
     Titanium.API.debug("twitter button click event...");
@@ -60,7 +60,7 @@ scr1_view.add(scr1_label_appname, scr1_label_tagline, scr1_label_instructions, s
  */
 function perform_twitter_auth()
 {
-    Ti.include('oauth_adapter.js');
+    Ti.include('/lib/oauth_adapter.js');
     var oAuthAdapter = new OAuthAdapter(
         'qsznnVkSYoRyV9c5Hild8W2oWZuHIm9jd11cMxGY',
         '95PnpZmcjjJOq2ys6ECXA',
