@@ -3,12 +3,30 @@ Ti.include("app/views/common.js");
 //
 // setup and display this window
 //
-var winSignin = Ti.UI.createWindow();
-winSignin.render = function()
+var win  = Ti.UI.createWindow();
+var view = null;
+win.render = function()
 {
     Ti.include("app/views/signin.js");
-    view_init(winSignin);
-}
+    view = view_init(win);
+};
+
+win.nextStep = function()
+{
+    stepName = 'dispatch';
+    Titanium.API.info("stepName: " + stepName);
+
+    //out with the old
+    win.remove(view);
+
+    // in with the new view
+    Ti.include("app/views/" + stepName + ".js");
+    view = view_init(win);
+
+    // in with the new controller
+    Ti.include("app/controllers/" + stepName + ".js");
+    win.render();
+};
 
 /**
  * taken from: http://ziodave.tumblr.com/post/746024933/titanium-implementation-of-twitter-oauth

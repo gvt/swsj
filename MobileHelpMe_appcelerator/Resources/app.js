@@ -6,7 +6,7 @@ var App = {
     start: function()
     {
         Ti.include("app/controllers/signin.js");
-        winSignin.render();
+        win.render();
     },
 
     tests_enabled: false,
@@ -15,7 +15,9 @@ var App = {
     {
         Ti.include('/test/enabled.js');
         return this.tests_enabled === true;
-    }
+    },
+    
+    userCanHelp: false // default to opt-in
 };
 
 //

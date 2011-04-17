@@ -1,17 +1,16 @@
 //
-//  CREATE CUSTOM LOADING INDICATOR
+//  create custom loading indicator -- not working (null objects in hide())
 //
+var AI_win       = null; // globals needed to keep state
+var AI_indicator = null; // globals needed to keep state
 var ActivityIndicator = {
     
-    win: null,
-    indicator: null,
-
     show: function()
     {
     	if (Ti.Platform.osname != 'android')
     	{
     		// window container
-    		this.win = Titanium.UI.createWindow({
+    		AI_win = Titanium.UI.createWindow({
     			height:150,
     			width:150
     		});
@@ -24,11 +23,11 @@ var ActivityIndicator = {
     			borderRadius:10,
     			opacity:0.8
     		});
-    		this.win.add(indView);
+    		AI_win.add(indView);
     	}
 
     	// loading indicator
-    	this.indicator = Titanium.UI.createActivityIndicator({
+    	AI_indicator = Titanium.UI.createActivityIndicator({
     		style:Titanium.UI.iPhone.ActivityIndicatorStyle.BIG,
     		height:30,
     		width:30,
@@ -36,7 +35,7 @@ var ActivityIndicator = {
 
     	if (Ti.Platform.osname != 'android')
     	{
-    		this.win.add(this.indicator);
+    		AI_win.add(AI_indicator);
 
     		// message
     		var message = Titanium.UI.createLabel({
@@ -47,20 +46,20 @@ var ActivityIndicator = {
     			font:{fontSize:20,fontWeight:'bold'},
     			bottom:20
     		});
-    		this.win.add(message);
-    		this.win.open();
+    		AI_win.add(message);
+    		AI_win.open();
     	} else {
-    		this.indicator.message = "Loading";
+    		AI_indicator.message = "Loading";
     	}
-    	this.indicator.show();
+    	AI_indicator.show();
 
     },
 
     hide: function()
     {
-    	this.indicator.hide();
+    	if (AI_indicator) AI_indicator.hide();
     	if (Ti.Platform.osname != 'android') {
-    		this.win.close({opacity:0,duration:500});
+    		AI_win.close({opacity:0,duration:500});
     	}
     }
     
