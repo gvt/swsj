@@ -13,3 +13,4 @@ config/database.yml
 .DS_Store
 public/system/*
 */build/*
+**/*.pptx
