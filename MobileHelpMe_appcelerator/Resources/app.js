@@ -3,7 +3,6 @@ var App = {
     
     start: function()
     {
-        Ti.include("app/activity_indicator.js");
         Ti.include("app/signin.js");
     },
 
@@ -14,10 +13,6 @@ var App = {
         Ti.include('/test/enabled.js');
         return this.tests_enabled === true;
     }
-};
-
-Ti.env = {
-    
 };
 
 if (App.testing()) {

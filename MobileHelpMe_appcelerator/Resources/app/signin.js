@@ -1,3 +1,5 @@
+Ti.include("app/activity_indicator.js");
+
 //
 // create base UI tab and root window
 //
@@ -5,6 +7,7 @@ Ti.UI.setBackgroundColor('#63b8ff');
 var win = Ti.UI.createWindow();
 showIndicator();
 win.open();
+
 
 //
 // create the first screen: 3 labels and a button
