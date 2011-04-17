@@ -95,18 +95,18 @@ describe UsersController do
     end
   end
 
-  describe "DELETE destroy" do
-    it "destroys the requested user" do
-      User.stub(:find).with("37") { mock_user }
-      mock_user.should_receive(:destroy)
-      delete :destroy, :id => "37", :format => :js
-    end
-
-    it "succeeds" do
-      User.stub(:find) { mock_user }
-      delete :destroy, :id => "1", :format => :js
-      response.should be_success
-    end
-  end
+  # describe "DELETE destroy" do
+  #   it "destroys the requested user" do
+  #     User.stub(:find).with("37") { mock_user }
+  #     mock_user.should_receive(:destroy)
+  #     delete :destroy, :id => "37", :format => :js
+  #   end
+  # 
+  #   it "succeeds" do
+  #     User.stub(:find) { mock_user }
+  #     delete :destroy, :id => "1", :format => :js
+  #     response.should be_success
+  #   end
+  # end
 
 end

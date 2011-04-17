@@ -1,7 +1,7 @@
 MobileHelpMeRails::Application.routes.draw do
 
-  resources :task_requests
-  resources :users, :except => [:new, :edit] do
+  resources :task_requests, :except => [:new, :edit, :destroy]
+  resources :users        , :except => [:new, :edit, :destroy] do
     resources :payments
     resources :feedbacks
     resources :problem_reports

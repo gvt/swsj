@@ -49,14 +49,14 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1.js
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    respond_to do |format|
-      # format.html { redirect_to(users_url) }
-      format.js  { head :ok }
-    end
-  end
+  # # DELETE /users/1.js
+  # def destroy
+  #   @user = User.find(params[:id])
+  #   @user.destroy
+  # 
+  #   respond_to do |format|
+  #     # format.html { redirect_to(users_url) }
+  #     format.js  { head :ok }
+  #   end
+  # end
 end

@@ -20,7 +20,7 @@ describe UsersController do
     end
 
     it "recognizes and generates #destroy" do
-      { :delete => "/users/1" }.should route_to(:controller => "users", :action => "destroy", :id => "1")
+      { :delete => "/users/1" }.should_not be_routable
     end
 
   end
