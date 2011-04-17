@@ -1,1 +1,0 @@
-these generators taken from http://paulbarry.com/articles/2010/01/13/customizing-generators-in-rails-3 and pruned to just the factory_girl because its the only part that both worked and is needed.
