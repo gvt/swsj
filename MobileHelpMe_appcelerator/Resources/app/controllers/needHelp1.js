@@ -7,17 +7,14 @@ var win  = Ti.UI.createWindow();
 var view = null;
 win.render = function()
 {
-    Ti.include("app/views/dispatch.js");
+    Titanium.API.info("render needHelp1");
+    Ti.include("app/views/needHelp1.js");
     view = view_init(win);
 }
 
 win.nextStep = function()
 {
-    if (App.userCanHelp === true ) {
-        stepName = 'canHelp1';
-    } else {
-        stepName = 'needHelp1';
-    }
+    stepName = 'needHelp2';
     Titanium.API.info("stepName: " + stepName);
 
     //out with the old

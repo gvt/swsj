@@ -3,12 +3,10 @@ common_view_init(win)
 
 //
 // accepts an instance of Ti.UI.Window
+// returns an instance of Ti.UI.View
 //
 function view_init(win)
 {
-    // show the spinner while the rest of the view loads
-    win.open();
-
     //
     // create the first screen: 3 labels and a button
     //
@@ -49,5 +47,6 @@ function view_init(win)
     // add the components, hide the spinner, show the view
     scr1_view.add(scr1_label_tagline, scr1_label_instructions, scr1_button_twitter);
     win.add(scr1_view);
+    win.open();
     return scr1_view; // return the view so that it can be removed from the window later
 }

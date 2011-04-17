@@ -19,10 +19,6 @@ win.nextStep = function()
     //out with the old
     win.remove(view);
 
-    // in with the new view
-    Ti.include("app/views/" + stepName + ".js");
-    view = view_init(win);
-
     // in with the new controller
     Ti.include("app/controllers/" + stepName + ".js");
     win.render();

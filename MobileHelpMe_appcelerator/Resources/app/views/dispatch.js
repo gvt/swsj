@@ -25,23 +25,21 @@ function view_init(win)
         backgroundColor:'green',
         font:{fontSize:36}
     });
+
+    // setup the button click handlers
     button_need_help.addEventListener('click', function() {
         Titanium.API.debug("button click event...");
         // go to next screen
         Titanium.API.info("user needs help");
         App.userCanHelp = false;
-        Titanium.API.info("win.nextStep()...");
         win.nextStep();
-        Titanium.API.info("win.nextStep() done");
     });
     button_can_help.addEventListener('click', function() {
         Titanium.API.debug("button click event...");
         // go to next screen
         Titanium.API.info("user can help");
         App.userCanHelp = true
-        Titanium.API.info("win.nextStep()...");
         win.nextStep();
-        Titanium.API.info("win.nextStep() done");
     });
 
     // add the components, show the view
