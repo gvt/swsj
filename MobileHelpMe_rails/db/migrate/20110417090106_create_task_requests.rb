@@ -1,7 +1,9 @@
 class CreateTaskRequests < ActiveRecord::Migration
   def self.up
     create_table :task_requests do |t|
-      t.string :title
+      t.integer :category_id
+      t.string  :description
+      t.string  :location
 
       t.timestamps
     end

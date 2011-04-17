@@ -13,7 +13,9 @@
 ActiveRecord::Schema.define(:version => 20110417090106) do
 
   create_table "task_requests", :force => true do |t|
-    t.string   "title"
+    t.integer  "category_id"
+    t.string   "description"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
