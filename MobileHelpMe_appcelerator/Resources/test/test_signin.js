@@ -8,11 +8,11 @@
 	describe('signin.js', function() {
 
         it("creates a window", function() {
-            expect(winSignin).not.toBeNull();
+            expect(win).not.toBeNull();
         });
 
         it("defines function render", function() {
-            expect(winSignin.render).toBeDefined();
+            expect(win.render).toBeDefined();
         });
         
         it("defines function perform_twitter_auth", function() {
