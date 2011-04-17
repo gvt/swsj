@@ -17,7 +17,8 @@ var App = {
         return this.tests_enabled === true;
     },
     
-    userCanHelp: false // default to opt-in
+    userCanHelp: false, // default to opt-in
+    location: "" // to contain geolocation
 };
 
 //
