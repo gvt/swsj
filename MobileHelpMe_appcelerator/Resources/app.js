@@ -5,7 +5,6 @@ var App = {
     
     start: function()
     {
-        Ti.include("app/views/common.js");
         Ti.include("app/controllers/signin.js");
         winSignin.render();
     },

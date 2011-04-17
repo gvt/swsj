@@ -3,7 +3,7 @@
 	Ti.include('/test/lib/jasmine-titanium.js');
 	
 	// Include all the test files
-	Ti.include('/test/test_signin.js');
+    Ti.include('/test/test_signin.js');
 	
 	jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
 	jasmine.getEnv().execute();

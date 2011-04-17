@@ -1,62 +1,13 @@
+Ti.include("app/views/common.js");
+
 //
 // setup and display this window
 //
 var winSignin = Ti.UI.createWindow();
 winSignin.render = function()
 {
-    //
-    // create base UI tab and root window
-    //
-    showIndicator();
-    winSignin.open();
-
-    //
-    // create the first screen: 3 labels and a button
-    //
-    var scr1_view = Ti.UI.createView();
-    var scr1_label_appname = Titanium.UI.createLabel({
-        text:"PaidAid",
-        font:{fontSize:48},
-        color:'white',
-        top:0,
-        width:'auto',height:'auto',
-        textAlign:'center'
-    });
-    var scr1_label_tagline = Titanium.UI.createLabel({
-        text:"Get help and help others",
-        color:'blue',
-        font:{fontSize:24},
-        top:80,
-        width:'auto',height:'auto',
-        textAlign:'center'
-    });
-    var scr1_label_instructions = Titanium.UI.createLabel({
-        text:"Sign-in to get started",
-        color:'white',
-        font:{fontSize:24},
-        top:160,
-        width:'auto',height:'auto',
-        textAlign:'center'
-    });
-    var scr1_button_twitter = Titanium.UI.createButton({
-        height:24,
-        width:151,
-        top:240,
-        backgroundImage:"iphone/sign-in-with-twitter.png" // dimensions of img 385x65. could use this: http://blog.140proof.com/post/569779156/scalable-sign-in-button
-    });
-    scr1_button_twitter.addEventListener('click', function() {
-        Titanium.API.debug("twitter button click event...");
-        showIndicator();
-        if (perform_twitter_auth()) {
-            // go to next screen
-            Titanium.API.info("twitter auth successful");
-        };
-        hideIndicator();
-    });
-    scr1_view.add(scr1_label_appname, scr1_label_tagline, scr1_label_instructions, scr1_button_twitter);
-
-    hideIndicator();
-    winSignin.add(scr1_view);    
+    Ti.include("app/views/signin.js");
+    view_init(winSignin);
 }
 
 /**
