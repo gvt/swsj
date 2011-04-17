@@ -1,9 +1,13 @@
 //
 // create base UI tab and root window
 //
-var win = Titanium.UI.createWindow({
-    backgroundColor:'#63b8ff'
-});
+Titanium.UI.setBackgroundColor('#63b8ff');
+var win = Titanium.UI.createWindow();
+
+Ti.include("activity_indicator.js");
+showIndicator();
+win.open();
+
 //
 // create the first screen: 3 labels and a button
 //
@@ -39,11 +43,13 @@ var scr1_button_twitter = Titanium.UI.createButton({
     backgroundImage:"sign-in-with-twitter-light.png" // dimensions of img 385x65. could use this: http://blog.140proof.com/post/569779156/scalable-sign-in-button
 });
 scr1_button_twitter.addEventListener('click', function() {
-    Titanium.API.info("GVT: button 'scr1_button_twitter' click event...");
-    perform_twitter_auth();
-    // if (perform_twitter_auth()) {
-    //     // go to next screen
-    // };
+    Titanium.API.debug("twitter button click event...");
+    showIndicator();
+    if (perform_twitter_auth()) {
+        // go to next screen
+        Titanium.API.info("twitter auth successful");
+    };
+    hideIndicator();
 });
 scr1_view.add(scr1_label_appname, scr1_label_tagline, scr1_label_instructions, scr1_button_twitter);
 
@@ -77,5 +83,5 @@ function perform_twitter_auth()
     return true; // assume that if we got this far, it was successful
 }
 
+hideIndicator();
 win.add(scr1_view);
-win.open();
