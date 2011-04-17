@@ -8,9 +8,10 @@ MobileHelpMeRails::Application.routes.draw do
   # intended for JSON output via REST calls
   resources :task_requests, :except => [:new, :edit, :destroy]
   resources :users        , :except => [:new, :edit, :destroy] do
-    resources :payments
-    resources :feedbacks
-    resources :problem_reports
+    # TODO: implement these as nested resources
+    # resources :payments
+    # resources :feedbacks
+    # resources :problem_reports
   end
 
   # Sample of named route:
