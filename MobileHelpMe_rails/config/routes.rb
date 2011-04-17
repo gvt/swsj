@@ -1,5 +1,5 @@
 MobileHelpMeRails::Application.routes.draw do
-  resources :users
+  resources :users, :except => [:new, :edit]
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
