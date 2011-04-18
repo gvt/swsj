@@ -1,11 +1,13 @@
 //
 // global app startup
 //
+Ti.include("debug.js");
+
 var App = {
     
     start: function()
     {
-        Ti.include("app/controllers/signin.js");
+        Ti.include("app/controllers/needHelp1.js");
         win.render();
     },
 
@@ -18,7 +20,8 @@ var App = {
     },
     
     userCanHelp: false, // default to opt-in
-    location: "" // to contain geolocation
+    location: "", // to contain geolocation
+    needHelpCategory: ""
 };
 
 //

@@ -11,11 +11,11 @@ function view_init(win)
     var view = Ti.UI.createView();
     var label = Ti.UI.createLabel({
         text:"Let's get your location...",
-        top:-200,
+        top:-300,
         left:20
     });
     var loc_field = Ti.UI.createTextField({
-        top:160,
+        top:180,
         left:20,
         width:280,
         height:35,
@@ -23,7 +23,7 @@ function view_init(win)
     });
     var next_button = Ti.UI.createButton({
         title:"Next",
-        top:'auto',
+        bottom:20,
         right:20,
         width:150,
         height:35
@@ -31,14 +31,17 @@ function view_init(win)
     
     var gpsCallBack = function(location_event)
     {
-        Titanium.API.debug("gpsCallBack...");
-        if (location_event.success === true) {
-            gps_display     = location_event.coords.latitude + ", " + location_event.coords.longitude;
-            loc_field.value = gps_display;
-        } else {
+        Ti.API.debug("gpsCallBack...");
+        
+        if (location_event.success === false) {
             gps_display     = location_event.error + " [error code " + location_event.code + "]";
             loc_field.value = gps_display;
+            return;
         }
+
+        var lat = location_event.coords.latitude, lng = location_event.coords.longitude;
+        gps_display     = lat + ", " + lng;
+        loc_field.value = gps_display;
     };
 
     Ti.Geolocation.purpose = "Need your location to fulfill your help request"; // required
