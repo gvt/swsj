@@ -9,26 +9,48 @@ function view_init(win)
     // create a view and 2 buttons
     //
     var view = Ti.UI.createView();
+    // user instructions
     var label = Ti.UI.createLabel({
         text:"Enter a brief description of what help you need",
         top:-260,
         left:20,
         font:{fontSize:24}
     });
-    var text = Ti.UI.createTextArea({
+
+    // Flexible Space for Button bars (done, etc)
+    var flexSpace = Titanium.UI.createButton({
+        systemButton:Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
+    });
+    // Done Button to release the keyboard
+    var done_button = Titanium.UI.createButton({
+        systemButton:Titanium.UI.iPhone.SystemButton.DONE
+    });
+    // form control to enter description
+    var textArea = Ti.UI.createTextArea({
         top:170,
         width:280,
         height:140,
-        color: 'black',
-        backgroundColor: 'white',
         borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        
+        borderRadius:10,
+
+        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
         returnKeyType:Titanium.UI.RETURNKEY_DEFAULT,
         suppressReturn:false, // to allow for newlines to be entered
+        keyboardToolbar:[flexSpace,done_button],
+        keyboardToolbarColor: '#999',
+        keyboardToolbarHeight: 30,
         
-        borderRadius:10,
+        color: 'black',
+        backgroundColor: 'white',
         font:{fontSize:14}
     });
+    // setup the next button click event handler
+    done_button.addEventListener('click', function() {
+        Titanium.API.debug("button [done] click event...");
+        textArea.blur();
+        Titanium.App.fireEvent("hideKeyboardToolbar");
+    });
+    // next button
     var next_button = Ti.UI.createButton({
         title:"Next",
         bottom:20,
@@ -36,15 +58,14 @@ function view_init(win)
         width:150,
         height:35
     });
-
+    // setup the next button click event handler
     next_button.addEventListener('click', function() {
         Titanium.API.debug("button click event...");
         // go to next screen
         win.nextStep();
     });
-
     // add the components, show the view
-    view.add(label, text, next_button);
+    view.add(label, textArea, next_button);
     win.add(view);
     win.open();
     return view; // return the view so that it can be removed from the window later

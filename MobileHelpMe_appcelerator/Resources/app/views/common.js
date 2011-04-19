@@ -5,7 +5,7 @@ Ti.UI.setBackgroundColor('#63b8ff');
 function common_view_init(win)
 {
     var label_appname = Titanium.UI.createLabel({
-        text:"PaidAid",
+        text:"Brownie Points",
         font:{fontSize:48},
         color:'white',
         top:0,
