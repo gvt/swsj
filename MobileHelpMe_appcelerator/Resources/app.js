@@ -7,7 +7,7 @@ var App = {
     
     start: function()
     {
-        Ti.include("app/controllers/needHelp3.js");
+        Ti.include("app/controllers/needHelp4.js");
         win.render();
     },
 
