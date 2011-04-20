@@ -39,6 +39,6 @@ win.submitTaskRequest = function()
         description : App.User.helpDescription,
         location    : App.User.location,
     });
-    tr.save();
+    tr.save(Ti.Network.createHTTPClient(), function(){}, function(){});
     return tr;
 }

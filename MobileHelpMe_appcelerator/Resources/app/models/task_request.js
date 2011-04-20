@@ -37,12 +37,12 @@ var TaskRequest = {
         {
             Ti.API.info('TaskRequest.save :: onload event...');
             this._new_record = false;
-            callbackForOnLoad.apply(this, evt);
+            callbackForOnLoad.call(this, evt);
         };
         xhr.onerror = function(evt)
         {
             Ti.API.info('TaskRequest.save :: onerror event...');
-            callbackForOnError.apply(this, evt);
+            callbackForOnError.call(this, evt);
         };
         try {
             xhr.open("POST","http://localhost:3000/task_requests.js");
