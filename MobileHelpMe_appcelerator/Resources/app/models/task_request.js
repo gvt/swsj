@@ -16,6 +16,7 @@ var TaskRequest = {
     ],
 
     attributes: {},
+    _new_record: true,
 
     build: function()
     {
@@ -24,32 +25,30 @@ var TaskRequest = {
         this.attributes.category_id = opts.category_id;
         this.attributes.description = opts.description;
         this.attributes.location    = opts.location   ;
-        this._new_record = true;
         return this;
     },
 
-    save: function(callback_onload, callback_onerror)
+    //
+    // make the web service call to the rails app here via XHR POST.
+    //
+    save: function(xhr, callbackForOnLoad, callbackForOnError)
     {
-        //
-        // XHR GET with Query String
-        //
-        var xhr = Titanium.Network.createHTTPClient();
         xhr.onload = function(evt)
         {
-        	Ti.API.info('onload event...');
-          // if (this.responseText) {};
-          this._new_record = false;
-          // callback_onload.apply(this, evt);
+            Ti.API.info('TaskRequest.save :: onload event...');
+            this._new_record = false;
+            callbackForOnLoad.apply(this, evt);
         };
         xhr.onerror = function(evt)
         {
-            Ti.API.info('onload event... ' + evt.error);
+            Ti.API.info('TaskRequest.save :: onerror event...');
+            callbackForOnError.apply(this, evt);
         };
         try {
             xhr.open("POST","http://localhost:3000/task_requests.js");
             xhr.send(this.attributes);
         } catch(e) {
-            Ti.API.error('exception encountered: ' + e.message);
+            Ti.API.error('TaskRequest.save :: exception encountered: ' + e.message);
             return false;
         }
         return true;
@@ -57,7 +56,7 @@ var TaskRequest = {
     
     isNewRecord: function()
     {
-        !!this._new_record;
+        return !!this._new_record;
     }
 };
 
