@@ -9,7 +9,7 @@
     Ti.include('test/controllers/test_needHelp1.js');
     Ti.include('test/controllers/test_needHelp2.js');
     // models
-    Ti.include('test/models/task_request_test.js');
+    Ti.include('test/models/test_task_request.js');
 	
 	jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
 	jasmine.getEnv().execute();
