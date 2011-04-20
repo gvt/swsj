@@ -11,13 +11,9 @@ function view_init(win)
     var view  = Ti.UI.createView({layout:'vertical', height:'20%', width:'80%', top:'25%', align:'center'});
     var labelIntructions = Ti.UI.createLabel({
         text:"Let's get your location...",
-        // top:-300,
-        // left:20
+        height:35,
     });
     var txtLocation = Ti.UI.createTextField({
-        // top:180,
-        // left:20,
-        // width:280,
         height:35,
         borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
     });

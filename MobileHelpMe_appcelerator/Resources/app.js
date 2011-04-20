@@ -20,10 +20,11 @@ var App = {
     },
     
     User: {
-        canHelp : false, // default to opt-in
-        location:    "", // to contain geolocation
-        helpCategory:"",
-        helpDescription:"",
+        canHelp         : false, // default to opt-in
+        location        : ""   , // to contain geolocation
+        helpCategoryId  : null ,
+        helpDescription : ""   ,
+        helpAmount      : 0    ,
     }
 };
 

@@ -15,26 +15,18 @@ function view_init(win)
         left:20,
         font:{fontSize:24}
     });
-    var data = [
-        {title:"Roadside assistance"},
-        {title:"Bring me something"},
-        {title:"Fix something"},
-        {title:"Carry stuff"},
-        {title:"Other"},
-    ];
     var tab = Ti.UI.createTableView({
         top:170,
-        data:data,
+        data:TaskRequest.categories,
         rowHeight: 40,
-        height:    40 * data.length,
+        height:    40 * TaskRequest.categories.length,
         font:{fontSize:20}
     });
     
 
     tab.addEventListener('click', function(click_event) {
         Titanium.API.debug("tableView click event... [" + click_event.row.title + "]");
-        App.needHelpCategory = click_event.row.title;
-        // go to next screen
+        App.User.helpCategoryId = click_event.row.id;
         win.nextStep();
     });
 

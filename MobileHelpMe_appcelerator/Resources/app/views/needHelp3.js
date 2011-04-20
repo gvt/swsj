@@ -61,7 +61,7 @@ function view_init(win)
     // setup the next button click event handler
     next_button.addEventListener('click', function() {
         Titanium.API.debug("button click event...");
-        // go to next screen
+        App.User.helpDescription = textArea.value;
         win.nextStep();
     });
     // add the components, show the view

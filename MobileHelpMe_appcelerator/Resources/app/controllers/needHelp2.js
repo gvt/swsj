@@ -1,4 +1,5 @@
 Ti.include("app/views/common.js");
+Ti.include("app/models/task_request.js");
 
 //
 // setup and display this window

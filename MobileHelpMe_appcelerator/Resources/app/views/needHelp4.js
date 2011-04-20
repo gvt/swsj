@@ -63,7 +63,7 @@ function view_init(win)
     // setup the next button click event handler
     buttonSubmit.addEventListener('click', function() {
         Titanium.API.debug("button click event...");
-        // go to next screen
+        App.User.helpAmount = sliderAmount.value;
         win.nextStep();
     });
     viewFoot.add(buttonSubmit);
