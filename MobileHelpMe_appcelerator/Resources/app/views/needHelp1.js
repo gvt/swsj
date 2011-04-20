@@ -3,7 +3,7 @@ Ti.include("/app/views/common.js");
 //
 // accepts an instance of Ti.UI.Window
 //
-function view_init(win)
+function view_init(win, controller)
 {
     //
     // create a view and 2 buttons
@@ -48,10 +48,8 @@ function view_init(win)
     btnNext.addEventListener('click', function() {
         Titanium.API.debug("button click event...");
         // go to next screen
-        win.nextStep();
+        controller.next(win);
     });
 
     win.add(view);
-    win.open();
-    return view; // return the view so that it can be removed from the window later
 }

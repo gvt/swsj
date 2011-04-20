@@ -1,17 +1,45 @@
-Ti.include("/app/views/common.js");
-common_view_init(win)
+// Ti.include("/app/views/common.js");
+// common_view_init(winRoot);
 
 //
-// accepts an instance of Ti.UI.Window
+// accepts an instance of Ti.UI.Window and an instance of <generic controller>
 // returns an instance of Ti.UI.View
 //
-function view_init(win)
+function view_init(win, controller)
 {
-    win.layout = 'vertical';
+    if (controller.alreadySignedIn()) {
+
+        var labelFeedback = Titanium.UI.createLabel({
+            text:"You are signed in.",
+            color:'white',
+            font:{fontSize:24},
+            top:160,
+            width:'auto',height:'auto',
+            textAlign:'center'
+        });
+        var btnContinue = Titanium.UI.createButton({
+                title:"Continue",
+                height: 40,
+                font:{fontSize:24}
+        });
+        btnContinue.addEventListener('click', function() {
+            controller.next(win);
+        });
+        win.add(labelFeedback, btnContinue);
+        return;
+    }
+
     //
     // create the first screen: 3 labels and a button
     //
-    var scr1_view = Ti.UI.createView();
+    var label_appname = Titanium.UI.createLabel({
+        text:"Brownie Points",
+        font:{fontSize:48},
+        color:'white',
+        top:0,
+        width:'auto',height:'auto',
+        textAlign:'center'
+    });
     var scr1_label_tagline = Titanium.UI.createLabel({
         text:"Get help and help others",
         color:'blue',
@@ -38,16 +66,13 @@ function view_init(win)
     // button click handler
     scr1_button_twitter.addEventListener('click', function() {
         Titanium.API.debug("twitter button click event...");
-        if (perform_twitter_auth()) {
-            // go to next screen
+        if (controller.perform_twitter_auth()) {
             Titanium.API.info("twitter auth successful");
-            win.nextStep();
+            controller.next(win);
         };
     });
 
     // add the components, hide the spinner, show the view
-    scr1_view.add(scr1_label_tagline, scr1_label_instructions, scr1_button_twitter);
+    scr1_view.add(label_appname, scr1_label_tagline, scr1_label_instructions, scr1_button_twitter);
     win.add(scr1_view);
-    win.open();
-    return scr1_view; // return the view so that it can be removed from the window later
 }

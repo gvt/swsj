@@ -3,27 +3,27 @@ Ti.include("app/views/common.js");
 //
 // setup and display this window
 //
-var win  = Ti.UI.createWindow();
-var view = null;
-win.render = function()
-{
-    Ti.include("app/views/dispatch.js");
-    view = view_init(win);
-}
-
-win.nextStep = function()
-{
-    if (App.userCanHelp === true ) {
-        stepName = 'canHelp1';
-    } else {
-        stepName = 'needHelp1';
-    }
-    Titanium.API.info("stepName: " + stepName);
-
-    //out with the old
-    win.remove(view);
-
-    // in with the new controller
-    Ti.include("app/controllers/" + stepName + ".js");
-    win.render();
+var Dispatch = {
+    
+    render: function()
+    {
+        var w = Ti.UI.createWindow();
+        Ti.include("app/views/dispatch.js");
+        view_init(w, this);
+        return w;
+    },
+    
+    next: function(w, userNeedsHelp)
+    {
+        if (userNeedsHelp === true) {
+            stepName = 'needHelp1';
+            // win.taskRequest = TaskRequest.build();
+        } else {
+            stepName = 'canHelp1';
+        }
+        Titanium.API.info("stepName: " + stepName);
+        Ti.include("app/controllers/" + stepName + ".js");
+        winRoot.nav.open(NeedHelp1.render(), {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
+    },
 };
+

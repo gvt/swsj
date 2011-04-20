@@ -3,12 +3,15 @@
 //
 Ti.include("debug.js");
 
+var winRoot = Ti.UI.createWindow(); // top-level window in this app
 var App = {
     
     start: function()
     {
-        Ti.include("app/controllers/dispatch.js");
-        win.render();
+        Ti.include("app/controllers/signin.js");
+        var w = Signin.render();
+        winRoot.add(w);
+        w.open();
     },
 
     tests_enabled: false,

@@ -12,9 +12,25 @@
             expect(win.render).toBeDefined();
         });
         
-        it("defines function win.nextStep", function() {
-            expect(win.nextStep).toBeDefined();
-        });
+
+    	describe('function nextStep', function() {
+
+            it("exists", function() {
+                expect(win.nextStep).toBeDefined();
+            });
+
+            it("works for NEED help", function() {
+                spyOn(win,'remove');
+                win.nextStep(true);
+                expect(win.remove).toHaveBeenCalledWith(null);
+                // expect().toBeDefined();
+            });
+
+            it("works for CAN help", function() {
+                expect(win.nextStep).toBeDefined();
+            });
+
+    	});
         
 	});
 	
