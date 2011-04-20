@@ -4,10 +4,10 @@
 	Ti.include('debug.js');
 	
     // controllers
-    Ti.include('/test/test_signin.js');
-    Ti.include('/test/test_dispatch.js');
-    Ti.include('/test/test_needHelp1.js');
-    Ti.include('/test/test_needHelp2.js');
+    Ti.include('test/controllers/test_signin.js');
+    Ti.include('test/controllers/test_dispatch.js');
+    Ti.include('test/controllers/test_needHelp1.js');
+    Ti.include('test/controllers/test_needHelp2.js');
     // models
     Ti.include('test/models/task_request_test.js');
 	
