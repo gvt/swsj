@@ -8,7 +8,7 @@ var NeedHelp1 = {
     render: function()
     {
         Titanium.API.info("render needHelp1");
-        var w = Ti.UI.createWindow();
+        var w = Ti.UI.createWindow({title:"Location"});
         Ti.include("app/views/needHelp1.js");
         view_init(w, this);
         return w;

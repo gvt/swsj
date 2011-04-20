@@ -7,7 +7,7 @@ var Dispatch = {
     
     render: function()
     {
-        var w = Ti.UI.createWindow();
+        var w = Ti.UI.createWindow({title:"Help?"});
         Ti.include("app/views/dispatch.js");
         view_init(w, this);
         return w;
@@ -15,7 +15,7 @@ var Dispatch = {
     
     next: function(w, userNeedsHelp)
     {
-        if (userNeedsHelp === true) {
+        if (userNeedsHelp) {
             stepName = 'needHelp1';
             // win.taskRequest = TaskRequest.build();
         } else {
@@ -23,7 +23,12 @@ var Dispatch = {
         }
         Titanium.API.info("stepName: " + stepName);
         Ti.include("app/controllers/" + stepName + ".js");
-        winRoot.nav.open(NeedHelp1.render(), {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
+        if (userNeedsHelp) {
+            winRoot.nav.open(NeedHelp1.render(), {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
+            // win.taskRequest = TaskRequest.build();
+        } else {
+            winRoot.nav.open(CanHelp1.render(), {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
+        }
     },
 };
 
