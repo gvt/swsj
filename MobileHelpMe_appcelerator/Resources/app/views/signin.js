@@ -7,6 +7,7 @@ common_view_init(win)
 //
 function view_init(win)
 {
+    win.layout = 'vertical';
     //
     // create the first screen: 3 labels and a button
     //

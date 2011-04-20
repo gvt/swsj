@@ -7,7 +7,7 @@ var App = {
     
     start: function()
     {
-        Ti.include("app/controllers/needHelp4.js");
+        Ti.include("app/controllers/dispatch.js");
         win.render();
     },
 
@@ -19,9 +19,12 @@ var App = {
         return this.tests_enabled === true;
     },
     
-    userCanHelp: false, // default to opt-in
-    location: "", // to contain geolocation
-    needHelpCategory: ""
+    User: {
+        canHelp : false, // default to opt-in
+        location:    "", // to contain geolocation
+        helpCategory:"",
+        helpDescription:"",
+    }
 };
 
 //
