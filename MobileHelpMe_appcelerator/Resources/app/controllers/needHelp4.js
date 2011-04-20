@@ -3,13 +3,14 @@ Ti.include("app/views/common.js");
 //
 // setup and display this window
 //
-var win  = Ti.UI.createWindow();
-var view = null;
+var win   = Ti.UI.createWindow();
+var views = []; // an array of views
 win.render = function()
 {
     Titanium.API.info("render needHelp4");
     Ti.include("app/views/needHelp4.js");
-    view = view_init(win);
+    // common_view_init(win);
+    views = view_init(win);
 }
 
 win.nextStep = function()
@@ -18,7 +19,9 @@ win.nextStep = function()
     Titanium.API.info("stepName: " + stepName);
 
     //out with the old
-    win.remove(view);
+    for (var i=0; i<views.length; i++) {
+        win.remove(views[i]);
+    }
 
     // in with the new controller
     Ti.include("app/controllers/" + stepName + ".js");

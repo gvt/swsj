@@ -4,6 +4,7 @@ Ti.include("app/views/common.js");
 // setup and display this window
 //
 var win  = Ti.UI.createWindow();
+win.layout = 'vertical';
 var view = null;
 win.render = function()
 {
