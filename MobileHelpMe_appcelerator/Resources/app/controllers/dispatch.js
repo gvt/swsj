@@ -1,7 +1,7 @@
 //
 // setup and display this window
 //
-var Dispatch = {
+mcv.create('controller', 'dispatch', {
 
     render: function()
     {
@@ -28,4 +28,4 @@ var Dispatch = {
             winRoot.nav.open(CanHelp1.render(), {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
         }
     },
-};
+});

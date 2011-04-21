@@ -1,12 +1,12 @@
 mcv.base('controller', {
+    //
+    // render the view for this controller, by using the name of this controller
+    // renders the screen to a new instance of Ti.UI.Window and returns it UNopened.
+    //
 	render: function()
 	{
         var w = Ti.UI.createWindow();
-        // Ti.include("app/views/signin.js");
-        // view_init(w, this);
+        mcv.v[this.name].render(w,this);
         return w;
-	},
-	next: function()
-	{
 	},
 });

@@ -35,7 +35,7 @@
     		expect(mcv.c.signin.oAuthAdapter).toBeDefined();
         });
 
-        describe("function render", function() {
+        describe("render", function() {
 
             it("should work", function() {
                 spyOn(Ti.UI,'createWindow').andCallThrough();
@@ -46,22 +46,15 @@
 
         });
 
-        xdescribe("function next", function() {
-
-            beforeEach(function(){
-                spyOn(Ti.UI,'createWindow').andCallThrough();
-                spyOn(mcv.v.signin,'render');
-                winRendered = mcv.c.signin.render();
-                // spyOn(winRendered,'close');
-                dumpObj2(App.w);
-                spyOn(App.w,'open');
-            })
+        describe("next", function() {
 
             it("should work", function() {
-                mcv.c.signin.next(winRendered);
-                // expect(winRendered.close).toHaveBeenCalled();
-                expect(App.w.open       ).toHaveBeenCalled();
-                App.w.close(); // KLUDGE: because the spy doesn't prevent the window from opening
+                w = Ti.UI.createWindow();
+                spyOn(mcv.c.dispatch,'render');
+
+                f = mcv.c.signin.next(w);
+                expect(typeof f).toEqual('function');
+                expect(mcv.c.dispatch.render).toHaveBeenCalled();
             });
 
         });
