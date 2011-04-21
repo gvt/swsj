@@ -2,22 +2,6 @@
 	
 	Ti.include('/app/controllers/signin.js');
 	
-	xdescribe('signin.js', function() {
-
-        it("creates a window", function() {
-            expect(win).not.toBeNull();
-        });
-
-        it("defines function render", function() {
-            expect(win.render).toBeDefined();
-        });
-        
-        it("defines function doTwitterAuth", function() {
-            expect(doTwitterAuth).toBeDefined();
-        });
-        
-	});
-
     describe("signin mcv controller", function() {
 
         it("should work", function() {

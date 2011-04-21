@@ -33,6 +33,7 @@ Ti.include("app/views/signin.js"     );
 var App = {
 
     w: Ti.UI.createWindow(), // top-level window in this app
+    d: {},                   // top-level object to act as a vehicle for data between controllers/views
 
     start: function()
     {
