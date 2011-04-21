@@ -1,12 +1,14 @@
 mcv.create('view', 'signin', {
     
     //
-    // accepts an instance of Ti.UI.Window and an instance of <generic controller>
+    // accepts an instance of Ti.UI.Window and an instance of mcv controller.
     // returns an instance of Ti.UI.View
     //
     render: function(win, controller)
     {
         if (controller.isAlreadySignedIn()) {
+
+    	    Ti.API.info("view.signin :: render() called: user isAlreadySignedIn");
 
             var lblFeedback = Titanium.UI.createLabel({
                 text:"You are signed in.",
@@ -28,6 +30,8 @@ mcv.create('view', 'signin', {
 
             return;
         }
+
+	    Ti.API.info("view.signin :: render() called: user not signed in");
 
         win.title = "Sign In";
         //

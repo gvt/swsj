@@ -1,6 +1,7 @@
 mcv.create('view', 'dispatch', {
     
     //
+    // accepts an instance of Ti.UI.Window and an instance of mcv controller.
     // accepts an instance of Ti.UI.Window
     //
     render: function(win, controller)

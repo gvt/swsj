@@ -1,24 +1,7 @@
-//
-// setup and display this window
-//
-var win  = Ti.UI.createWindow();
-var view = null;
-win.render = function()
-{
-    Titanium.API.info("render needHelp3");
-    Ti.include("app/views/needHelp3.js");
-    view = view_init(win);
-}
+mcv.create('controller', 'needhelp3', {
 
-win.nextStep = function()
-{
-    stepName = 'needHelp4';
-    Titanium.API.info("stepName: " + stepName);
-
-    //out with the old
-    win.remove(view);
-
-    // in with the new controller
-    Ti.include("app/controllers/" + stepName + ".js");
-    win.render();
-};
+    next: function()
+    {
+        this.n(mcv.c.needhelp4);
+    },
+});
