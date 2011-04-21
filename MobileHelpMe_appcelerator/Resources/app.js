@@ -18,7 +18,7 @@ Ti.include("app/controllers/signin.js"     );
 // app code: models
 Ti.include("app/models/task_request.js");
 // app code: views
-// Ti.include("app/views/_base.js"      );
+Ti.include("app/views/_base.js"      );
 Ti.include("app/views/canHelp1.js"   );
 Ti.include("app/views/dispatch.js"   );
 Ti.include("app/views/needHelp1.js"  );
