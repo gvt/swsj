@@ -2,7 +2,7 @@
 	
 	Ti.include('lib/mcv-1.0-full.js');
 
-	describe('Helpers', function() {
+	describe('MCV Helpers', function() {
 
     	describe('Basic functionality', function() {
 

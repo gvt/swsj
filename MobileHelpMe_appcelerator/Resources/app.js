@@ -35,7 +35,7 @@ var App = {
 // if testing run the test suite, otherwise render the UI
 //
 if (App.testing()) {
-    Ti.include('/test/tests.js');
+    Ti.include('test/tests.js');
 } else {
     App.start();
 }

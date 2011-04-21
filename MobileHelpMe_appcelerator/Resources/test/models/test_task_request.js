@@ -1,11 +1,8 @@
 (function(){
 	
-	// To learn how to write Jasmine tests, please read Jasmine documentation:
-	// https://github.com/pivotal/jasmine/wiki
-
 	Ti.include('/app/models/task_request.js');
 	
-	describe('task_request.js', function() {
+	describe('TaskRequest', function() {
 
         it("exists", function() {
            expect(TaskRequest).not.toBeNull(); 

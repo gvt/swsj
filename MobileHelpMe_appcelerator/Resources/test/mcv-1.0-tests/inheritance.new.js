@@ -2,7 +2,7 @@
 	
 	Ti.include('lib/mcv-1.0-full.js');
 
-	describe('Inheritance', function() {
+	describe('MCV Inheritance', function() {
 
         beforeEach(function() {
 
