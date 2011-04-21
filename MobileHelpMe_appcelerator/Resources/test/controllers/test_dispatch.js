@@ -1,33 +1,38 @@
 (function(){
 	
 	Ti.include('/app/controllers/dispatch.js');
-	
-	describe('dispatch.js', function() {
 
-        it("creates a window", function() {
-            expect(win).not.toBeNull();
-        });
+	describe('dispatch controller', function() {
+	    beforeEach(function() {
+	        c = mcv.c.dispatch;
+	        expect(c).toBeDefined();
+	        expect(c).not.toBeNull();
+	    });
 
-        it("defines function win.render", function() {
-            expect(win.render).toBeDefined();
-        });
-        
-
-    	describe('function nextStep', function() {
+    	describe('userNeedsHelp', function() {
 
             it("exists", function() {
-                expect(win.nextStep).toBeDefined();
+                expect(c.userNeedsHelp).toBeDefined();
             });
 
-            it("works for NEED help", function() {
-                spyOn(win,'remove');
-                win.nextStep(true);
-                expect(win.remove).toHaveBeenCalledWith(null);
-                // expect().toBeDefined();
+            it("calls n() as expected", function() {
+                spyOn(c,'n');
+                c.userNeedsHelp();
+                expect(c.n).toHaveBeenCalledWith(mcv.c.needhelp1);
             });
 
-            it("works for CAN help", function() {
-                expect(win.nextStep).toBeDefined();
+    	});
+
+    	describe('userCanHelp', function() {
+
+            it("exists", function() {
+                expect(c.userCanHelp).toBeDefined();
+            });
+
+            it("calls n() as expected", function() {
+                spyOn(c,'n');
+                c.userCanHelp();
+                expect(c.n).toHaveBeenCalledWith(mcv.c.canhelp1);
             });
 
     	});
