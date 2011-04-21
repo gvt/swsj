@@ -8,9 +8,9 @@
     Ti.include('test/lib/jasmine-titanium.js');
 	
     // framework
-    Ti.include('test/mcv-1.0-tests/core.new.js');
-    Ti.include('test/mcv-1.0-tests/inheritance.new.js');
-    Ti.include('test/mcv-1.0-tests/helpers.new.js');
+    Ti.include('test/mcv-1.0-tests/core.js');
+    Ti.include('test/mcv-1.0-tests/inheritance.js');
+    Ti.include('test/mcv-1.0-tests/helpers.js');
 	
 	jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
 	jasmine.getEnv().execute();
