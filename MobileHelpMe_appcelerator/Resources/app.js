@@ -29,14 +29,15 @@ Ti.include("app/views/needHelpEnd.js");
 Ti.include("app/views/signin.js"     );
 
 
-var winRoot = Ti.UI.createWindow(); // top-level window in this app, intentionally in the global scope.
-var App = { // top-level App object, also intentionally in the global scope.
-    
+// top-level App object, intentionally in the global scope.
+var App = {
+
+    w: Ti.UI.createWindow(), // top-level window in this app
+
     start: function()
     {
-        Ti.include("app/controllers/signin.js");
-        var w = Signin.render();
-        winRoot.add(w);
+        var w = mcv.c.signin.render();
+        App.w.add(w);
         w.open();
     },
 
@@ -50,7 +51,6 @@ var App = { // top-level App object, also intentionally in the global scope.
     
 };
 
-// Ti.include("app/controllers/_base.js");
 
 //
 // if testing run the test suite, otherwise render the UI

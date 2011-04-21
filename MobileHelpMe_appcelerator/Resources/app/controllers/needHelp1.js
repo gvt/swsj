@@ -1,5 +1,3 @@
-Ti.include("app/views/common.js");
-
 //
 // setup and display this window
 //

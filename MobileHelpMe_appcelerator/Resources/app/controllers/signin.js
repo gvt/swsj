@@ -17,8 +17,7 @@ mcv.create('controller', 'signin', {
     render: function()
     {
         var w = Ti.UI.createWindow();
-        Ti.include("app/views/signin.js");
-        // view_init(w, this);
+        mcv.v.signin.render(w, this);
         return w;
     },
 
@@ -28,18 +27,15 @@ mcv.create('controller', 'signin', {
     //
     next: function(w)
     {
-        stepName = 'dispatch';
-        Titanium.API.info("stepName: " + stepName);
+        Titanium.API.info("signin.next :: Dispatch");
+        App.w.nav = Ti.UI.iPhone.createNavigationGroup({window: Dispatch.render()});
+        App.w.add(App.w.nav);
 
-        Ti.include("app/controllers/" + stepName + ".js");
-        winRoot.nav = Ti.UI.iPhone.createNavigationGroup({window: Dispatch.render()});
-        winRoot.add(winRoot.nav);
-
-        w      .close({transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
-        winRoot.open ({transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
+        w    .close({transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
+        App.w.open( {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
     },
 
-    alreadySignedIn: function()
+    isAlreadySignedIn: function()
     {
         this.oAuthAdapter.loadAccessToken('twitter');
         return this.oAuthAdapter.isAuthorized();

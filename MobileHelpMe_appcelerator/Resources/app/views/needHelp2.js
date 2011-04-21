@@ -1,5 +1,3 @@
-Ti.include("/app/views/common.js");
-
 //
 // accepts an instance of Ti.UI.Window
 //
