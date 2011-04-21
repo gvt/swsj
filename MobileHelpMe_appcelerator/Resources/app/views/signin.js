@@ -1,4 +1,4 @@
-// Ti.include("/app/views/common.js");
+Ti.include("/app/views/common.js");
 // common_view_init(winRoot);
 
 //
@@ -9,7 +9,7 @@ function view_init(win, controller)
 {
     if (controller.alreadySignedIn()) {
 
-        var labelFeedback = Titanium.UI.createLabel({
+        var lblFeedback = Titanium.UI.createLabel({
             text:"You are signed in.",
             color:'white',
             font:{fontSize:24},
@@ -25,54 +25,63 @@ function view_init(win, controller)
         btnContinue.addEventListener('click', function() {
             controller.next(win);
         });
-        win.add(labelFeedback, btnContinue);
+        win.add(lblFeedback, btnContinue);
+
         return;
     }
 
     //
     // create the first screen: 3 labels and a button
     //
-    var label_appname = Titanium.UI.createLabel({
+    var lblAppname = Titanium.UI.createLabel({
         text:"Brownie Points",
         font:{fontSize:48},
         color:'white',
+        height:'auto',
         top:0,
-        width:'auto',height:'auto',
         textAlign:'center'
     });
-    var scr1_label_tagline = Titanium.UI.createLabel({
+    var lblTagline = Titanium.UI.createLabel({
         text:"Get help and help others",
         color:'blue',
         font:{fontSize:24},
-        top:80,
-        width:'auto',height:'auto',
+        height:'auto',
+        top:25,
         textAlign:'center'
     });
-    var scr1_label_instructions = Titanium.UI.createLabel({
+    var lblInstructions = Titanium.UI.createLabel({
         text:"Sign-in to get started",
         color:'white',
         font:{fontSize:24},
-        top:160,
-        width:'auto',height:'auto',
+        height:'auto',
+        top:50,
         textAlign:'center'
     });
-    var scr1_button_twitter = Titanium.UI.createButton({
-        height:24,
+    var btnTwitter = Titanium.UI.createButton({
+        height: 24,
         width:151,
-        top:240,
+        top:75,
         backgroundImage:"iphone/sign-in-with-twitter.png" // dimensions of img 385x65. could use this: http://blog.140proof.com/post/569779156/scalable-sign-in-button
     });
-    
+
     // button click handler
-    scr1_button_twitter.addEventListener('click', function() {
+    btnTwitter.addEventListener('click', function() {
         Titanium.API.debug("twitter button click event...");
-        if (controller.perform_twitter_auth()) {
-            Titanium.API.info("twitter auth successful");
+        if (controller.alreadySignedIn()) {
             controller.next(win);
-        };
+        } else {
+            //
+            // TODO: why is this not working right?
+            //
+            controller.doTwitterAuth(function(){
+                Titanium.API.info("twitter auth successful");
+                controller.next(win);
+            });
+        }
     });
 
     // add the components, hide the spinner, show the view
-    scr1_view.add(label_appname, scr1_label_tagline, scr1_label_instructions, scr1_button_twitter);
-    win.add(scr1_view);
+    var view = Ti.UI.createView({layout:'vertical', height:'100%', width:'80%', align:'center'}); //, borderColor:'red'   , borderWidth:2});
+    view.add(lblAppname, lblTagline, lblInstructions, btnTwitter);
+    win.add(view);
 }

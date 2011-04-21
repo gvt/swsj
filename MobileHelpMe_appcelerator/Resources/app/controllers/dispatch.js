@@ -4,7 +4,7 @@ Ti.include("app/views/common.js");
 // setup and display this window
 //
 var Dispatch = {
-    
+
     render: function()
     {
         var w = Ti.UI.createWindow({title:"Help?"});
@@ -12,7 +12,7 @@ var Dispatch = {
         view_init(w, this);
         return w;
     },
-    
+
     next: function(w, userNeedsHelp)
     {
         if (userNeedsHelp) {
@@ -31,4 +31,3 @@ var Dispatch = {
         }
     },
 };
-

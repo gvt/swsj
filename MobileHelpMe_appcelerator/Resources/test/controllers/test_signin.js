@@ -15,8 +15,8 @@
             expect(win.render).toBeDefined();
         });
         
-        it("defines function perform_twitter_auth", function() {
-            expect(perform_twitter_auth).toBeDefined();
+        it("defines function doTwitterAuth", function() {
+            expect(doTwitterAuth).toBeDefined();
         });
         
 	});

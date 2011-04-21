@@ -49,23 +49,18 @@ var Signin = {
      * taken from: http://ziodave.tumblr.com/post/746024933/titanium-implementation-of-twitter-oauth
      * by David Riccitelli http://twitter.com/ziodave
      */
-    perform_twitter_auth: function()
+    doTwitterAuth: function(callbackForSuccess)
     {
-        // load the access token for the service (if previously saved)
-        this.oAuthAdapter.loadAccessToken('twitter');
-        // if the client is not authorized, ask for authorization.
-        if (this.oAuthAdapter.isAuthorized() == false)
-        {
-            // this function will be called as soon as the application is authorized
-            var receivePin = function() {
-                // get the access token with the provided pin/oauth_verifier
-                this.oAuthAdapter.getAccessToken('https://api.twitter.com/oauth/access_token');
-                // save the access token
-                this.oAuthAdapter.saveAccessToken('twitter');
-            };
-            // show the authorization UI and call back the receive PIN function
-            this.oAuthAdapter.showAuthorizeUI('https://api.twitter.com/oauth/authorize?' + this.oAuthAdapter.getRequestToken('https://api.twitter.com/oauth/request_token'), receivePin);
-        }
+        // this function will be called as soon as the application is authorized
+        var receivePin = function() {
+            // get the access token with the provided pin/oauth_verifier
+            Signin.oAuthAdapter.getAccessToken('https://api.twitter.com/oauth/access_token');
+            // save the access token
+            Signin.oAuthAdapter.saveAccessToken('twitter');
+            callbackForSuccess.call();
+        };
+        // show the authorization UI and call back the receive PIN function
+        this.oAuthAdapter.showAuthorizeUI('https://api.twitter.com/oauth/authorize?' + this.oAuthAdapter.getRequestToken('https://api.twitter.com/oauth/request_token'), receivePin);
         return true; // assume that if we got this far, it was successful
     },
 };
