@@ -18,7 +18,7 @@ mcv.create('controller', 'signin', {
     {
         var w = Ti.UI.createWindow();
         Ti.include("app/views/signin.js");
-        view_init(w, this);
+        // view_init(w, this);
         return w;
     },
 

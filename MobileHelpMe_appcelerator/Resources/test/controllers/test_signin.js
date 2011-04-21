@@ -22,12 +22,33 @@
 
         it("should work", function() {
     		expect(mcv.c.signin).toBeTruthy();
-            // expect(mcv.v.mickey.m().v()).toEqual(mcv.v.mickey); //, mcv.v.mickey, 'Going from the model to the view and back is the identity');
-            // expect(mcv.v.mickey.whoAmI ).toEqual('view')      ; //, 'view', 'The WhoAmI property reports correctly');
-            // expect(mcv.m.mickey.friend ).toEqual('goofy')     ; //, 'goofy', 'Model "mickey" inherits from the base model');
-            
         });
 
+        it("should have some expected methods", function() {
+    		expect(mcv.c.signin.render         ).toBeDefined();
+    		expect(mcv.c.signin.next           ).toBeDefined();
+    		expect(mcv.c.signin.alreadySignedIn).toBeDefined();
+    		expect(mcv.c.signin.doTwitterAuth  ).toBeDefined();
+        });
+        
+        it("should have some expected properties", function() {
+    		expect(mcv.c.signin.oAuthAdapter).toBeDefined();
+        });
+
+        describe("function render", function() {
+
+            it("should work", function() {
+                spyOn(Ti.UI,'createWindow').andCallThrough();
+                // spyOn(Ti,'include');
+
+                var w = mcv.c.signin.render()
+                expect(w).not.toBeNull();
+
+                // expect(Ti.UI.createWindow    ).toHaveBeenCalled();
+                // expect(Ti.include            ).toHaveBeenCalledWith("app/views/signin.js");
+            });
+
+        });
     });
 	
 })();
