@@ -12,8 +12,7 @@ mcv.create('controller', 'signin', {
     ),
 
     //
-    // accepts an instance of Ti.UI.Window
-    // in this function, the signin window gets closed and the navGroup on winRoot gets opened.
+    // calls this object's parent n() method to pass control to the next controller.
     //
     next: function()
     {

@@ -28,14 +28,12 @@ mcv.create('view', 'dispatch', {
 
         // setup the button click handlers
         button_need_help.addEventListener('click', function() {
-            Titanium.API.debug("button click event...");
             Titanium.API.info("user needs help");
-            controller.next(win, true);
+            controller.userNeedsHelp(win);
         });
         button_can_help.addEventListener('click', function() {
-            Titanium.API.debug("button click event...");
             Titanium.API.info("user can help");
-            controller.next(win, false);
+            controller.userCanHelp(win);
         });
 
         // add the components, show the view
