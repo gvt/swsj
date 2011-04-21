@@ -5,11 +5,11 @@
 	
     // controllers
     Ti.include('test/controllers/test_signin.js');
-    // Ti.include('test/controllers/test_dispatch.js');
+    Ti.include('test/controllers/test_dispatch.js');
     // Ti.include('test/controllers/test_needHelp1.js');
     // Ti.include('test/controllers/test_needHelp2.js');
     // models
-    // Ti.include('test/models/test_task_request.js');
+    Ti.include('test/models/test_task_request.js');
     // views
     Ti.include('test/views/test_signin.js');
     

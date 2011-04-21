@@ -15,9 +15,14 @@
                 expect(c.userNeedsHelp).toBeDefined();
             });
 
-            it("calls n() as expected", function() {
+            it("captures user input and calls n()", function() {
                 spyOn(c,'n');
-                c.userNeedsHelp();
+                expect(App.d.taskRequest).not.toBeDefined();
+                
+                var tr = {description:"just testing"};
+                c.userNeedsHelp(tr);
+                
+                expect(App.d.taskRequest.attributes.description).toEqual("just testing");
                 expect(c.n).toHaveBeenCalledWith(mcv.c.needhelp1);
             });
 
@@ -32,6 +37,16 @@
             it("calls n() as expected", function() {
                 spyOn(c,'n');
                 c.userCanHelp();
+                expect(c.n).toHaveBeenCalledWith(mcv.c.canhelp1);
+            });
+
+            it("clears any TaskRequest already begun", function() {
+                spyOn(c,'n');
+                App.d.taskRequest = {};
+                expect(App.d.taskRequest).toBeDefined();
+
+                c.userCanHelp();
+                expect(App.d.taskRequest).not.toBeDefined();
                 expect(c.n).toHaveBeenCalledWith(mcv.c.canhelp1);
             });
 
