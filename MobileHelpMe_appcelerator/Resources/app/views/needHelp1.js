@@ -47,7 +47,6 @@ function view_init(win, controller)
 
     btnNext.addEventListener('click', function() {
         Titanium.API.debug("button click event...");
-        // go to next screen
         controller.next(win);
     });
 

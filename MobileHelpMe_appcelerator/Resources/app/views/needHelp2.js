@@ -3,7 +3,7 @@ Ti.include("/app/views/common.js");
 //
 // accepts an instance of Ti.UI.Window
 //
-function view_init(win)
+function view_init(win, controller)
 {
     //
     // create a view and 2 buttons
@@ -23,16 +23,12 @@ function view_init(win)
         font:{fontSize:20}
     });
     
-
     tab.addEventListener('click', function(click_event) {
         Titanium.API.debug("tableView click event... [" + click_event.row.title + "]");
         App.User.helpCategoryId = click_event.row.id;
-        win.nextStep();
+        controller.next(win);
     });
 
-    // add the components, show the view
     view.add(label, tab);
     win.add(view);
-    win.open();
-    return view; // return the view so that it can be removed from the window later
-}
+};

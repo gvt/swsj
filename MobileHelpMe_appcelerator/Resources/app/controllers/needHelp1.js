@@ -20,6 +20,6 @@ var NeedHelp1 = {
         Titanium.API.info("stepName: " + stepName);
 
         Ti.include("app/controllers/" + stepName + ".js");
-        winRoot.open (NeedHelp1.render(), {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
+        winRoot.open (NeedHelp2.render(), {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
     },
 };
