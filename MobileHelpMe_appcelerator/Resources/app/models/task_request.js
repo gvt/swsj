@@ -5,7 +5,8 @@
 // t.datetime "created_at"
 // t.datetime "updated_at"
 // 
-var TaskRequest = {
+mcv.create('model', 'TaskRequest', {
+// var TaskRequest = {
 
     categories: [
         {title:"Roadside assistance", id: 123},
@@ -20,7 +21,7 @@ var TaskRequest = {
 
     build: function()
     {
-        opts = arguments[0];
+        opts = arguments[0] || {};
         this.attributes = {};
         this.attributes.category_id = opts.category_id;
         this.attributes.description = opts.description;
@@ -58,4 +59,5 @@ var TaskRequest = {
     {
         return !!this._new_record;
     }
-};
+
+});
