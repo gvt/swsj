@@ -3,14 +3,6 @@
 //
 mcv.create('controller', 'dispatch', {
 
-    render: function()
-    {
-        var w = Ti.UI.createWindow({title:"Help?"});
-        Ti.include("app/views/dispatch.js");
-        view_init(w, this);
-        return w;
-    },
-
     next: function(w, userNeedsHelp)
     {
         if (userNeedsHelp) {

@@ -36,9 +36,10 @@ var App = {
 
     start: function()
     {
-        var w = mcv.c.signin.render();
-        App.w.add(w);
-        w.open();
+        var w     = mcv.c.signin.render();
+        App.w.nav = Ti.UI.iPhone.createNavigationGroup({window:w});
+        App.w.add(App.w.nav);
+        App.w.open();
     },
 
     tests_enabled: false,

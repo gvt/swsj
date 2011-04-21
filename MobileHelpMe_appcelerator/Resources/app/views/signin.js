@@ -29,6 +29,7 @@ mcv.create('view', 'signin', {
             return;
         }
 
+        win.title = "Sign In";
         //
         // create the first screen: 3 labels and a button
         //

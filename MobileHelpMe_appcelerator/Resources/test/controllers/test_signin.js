@@ -47,13 +47,16 @@
         });
 
         describe("next", function() {
+            beforeEach(function() {
+                w         = Ti.UI.createWindow();
+                App.w     = Ti.UI.createWindow();
+                App.w.nav = { open:function(){} }
+            });
 
             it("should work", function() {
-                w = Ti.UI.createWindow();
                 spyOn(mcv.c.dispatch,'render');
 
                 f = mcv.c.signin.next(w);
-                expect(typeof f).toEqual('function');
                 expect(mcv.c.dispatch.render).toHaveBeenCalled();
             });
 

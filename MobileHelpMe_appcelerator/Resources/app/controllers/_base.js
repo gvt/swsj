@@ -9,4 +9,12 @@ mcv.base('controller', {
         mcv.v[this.name].render(w,this);
         return w;
 	},
+
+    //
+    // pops a window on the stack of the NavGroup and moves to it.
+    //
+    n: function(nextC)
+    {
+        App.w.nav.open(nextC.render());
+    },
 });

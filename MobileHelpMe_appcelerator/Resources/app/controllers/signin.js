@@ -15,21 +15,9 @@ mcv.create('controller', 'signin', {
     // accepts an instance of Ti.UI.Window
     // in this function, the signin window gets closed and the navGroup on winRoot gets opened.
     //
-    next: function(w)
+    next: function()
     {
-        Titanium.API.info("signin.next :: Dispatch");
-        App.w.nav = Ti.UI.iPhone.createNavigationGroup({window: mcv.c.dispatch.render()});
-        App.w.add(App.w.nav);
-        var wAnim = function()
-        {
-            w    .close({transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
-            App.w.open( {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
-        };
-        if (App.testing()) {
-            return wAnim;
-        } else {
-            wAnim();
-        }
+        this.n(mcv.c.dispatch);
     },
 
     isAlreadySignedIn: function()
