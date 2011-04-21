@@ -2,9 +2,10 @@
 // global app startup
 //
 Ti.include("debug.js");
+// Ti.include("lib/.js");
 
-var winRoot = Ti.UI.createWindow(); // top-level window in this app
-var App = {
+var winRoot = Ti.UI.createWindow(); // top-level window in this app, intentionally in the global scope.
+var App = { // top-level App object, also intentionally in the global scope.
     
     start: function()
     {
@@ -22,14 +23,9 @@ var App = {
         return this.tests_enabled === true;
     },
     
-    User: {
-        canHelp         : false, // default to opt-in
-        location        : ""   , // to contain geolocation
-        helpCategoryId  : null ,
-        helpDescription : ""   ,
-        helpAmount      : 0    ,
-    }
 };
+
+// Ti.include("app/controllers/_base.js");
 
 //
 // if testing run the test suite, otherwise render the UI

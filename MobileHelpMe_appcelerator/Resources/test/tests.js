@@ -2,15 +2,15 @@
 (function(){
 	Ti.include('test/lib/jasmine-1.0.2.js');
 	Ti.include('test/lib/jasmine-titanium.js');
-	Ti.include('debug.js');
+	Ti.include('lib/mcv-1.0-full.js');
 	
     // controllers
-    // Ti.include('test/controllers/test_signin.js');
+    Ti.include('test/controllers/test_signin.js');
     // Ti.include('test/controllers/test_dispatch.js');
     // Ti.include('test/controllers/test_needHelp1.js');
     // Ti.include('test/controllers/test_needHelp2.js');
     // models
-    Ti.include('test/models/test_task_request.js');
+    // Ti.include('test/models/test_task_request.js');
 	
 	jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
 	jasmine.getEnv().execute();

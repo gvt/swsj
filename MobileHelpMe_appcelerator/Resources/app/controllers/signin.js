@@ -3,7 +3,7 @@ Ti.include('/lib/oauth_adapter.js');
 //
 // setup and display this window
 //
-var Signin = {
+mcv.create('controller', 'signin', {
 
     oAuthAdapter: new OAuthAdapter(
         'qsznnVkSYoRyV9c5Hild8W2oWZuHIm9jd11cMxGY',
@@ -63,4 +63,4 @@ var Signin = {
         this.oAuthAdapter.showAuthorizeUI('https://api.twitter.com/oauth/authorize?' + this.oAuthAdapter.getRequestToken('https://api.twitter.com/oauth/request_token'), receivePin);
         return true; // assume that if we got this far, it was successful
     },
-};
+});
