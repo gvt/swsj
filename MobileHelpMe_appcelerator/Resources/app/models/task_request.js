@@ -4,9 +4,9 @@
 // t.string   "location"
 // t.datetime "created_at"
 // t.datetime "updated_at"
+// t.integer  "amount"
 // 
 mcv.create('model', 'TaskRequest', {
-// var TaskRequest = {
 
     categories: [
         {title:"Roadside assistance", id: 123},
@@ -48,17 +48,13 @@ mcv.create('model', 'TaskRequest', {
         };
         try {
             xhr.open("POST","http://localhost:3000/task_requests.js");
-
-            // xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-            xhr.setRequestHeader("content-type", "application/json");
-            var json = JSON.stringify({task_request:this.attributes});
-
+            xhr.setRequestHeader("content-type", "application/json");  // need this because rails receives it string-escaped without it. see here: http://developer.appcelerator.com/question/111911/nested-json-to-rails-api
+            var json = JSON.stringify({task_request:this.attributes}); // rails likes its JSON with a root object
             xhr.send(json);
         } catch(e) {
             Ti.API.error('TaskRequest.save :: exception encountered: ' + e.message);
             return false;
         }
-        return true;
     },
     
     isNewRecord: function()

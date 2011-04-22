@@ -55,15 +55,26 @@
                 opts = {category_id:'qwerty cat', description:'functional desc here', location:'37.77018737792969, -122.4037094116211'};
                 tr   = m.build(opts);
                 // mock out the API call to NOOPs instead
-                var xhr_mock = { open:function(){}, send:function(){} }; 
+                var xhr_mock = { open:function(){}, send:function(){}, setRequestHeader:function(){} }; 
                 spyOn(xhr_mock,'open');
                 spyOn(xhr_mock,'send');
+                spyOn(xhr_mock,'setRequestHeader');
+                // var callbacks = {
+                //     callbackForOnLoad:  function(){},
+                //     callbackForOnError: function(){}
+                // };
+                // spyOn(callbacks,'callbackForOnLoad' );
+                // spyOn(callbacks,'callbackForOnError');
 
-                expect(tr.save(xhr_mock)).toBe(true);
-                var json = JSON.stringify(tr.attributes);
-                Ti.API.info("json=" + json);
-                expect(xhr_mock.open).toHaveBeenCalled();
+                tr.save(xhr_mock/*, callbackForOnLoad*/);
+                var json = JSON.stringify({task_request:tr.attributes}); // how rails likes its JSON
+                expect(xhr_mock.setRequestHeader).toHaveBeenCalled();
+                expect(xhr_mock.open).toHaveBeenCalledWith("POST","http://localhost:3000/task_requests.js");
                 expect(xhr_mock.send).toHaveBeenCalledWith(json);
+                
+                // TODO: verify the callbacks
+                // expect(callbacks.callbackForOnLoad ).toHaveBeenCalled();
+                // expect(callbacks.callbackForOnError).toHaveBeenCalled();
             });
         });
 
