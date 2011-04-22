@@ -29,21 +29,21 @@ mcv.create('view', 'needhelp1', {
 
     
         Ti.Geolocation.purpose = "Need your location to fulfill your help request"; // required
-        var gpsCallBack = function(locationEvent)
+        var fnGeoHandler = function(locationEvent)
         {
             if (!locationEvent.success) {
-                gps_display     = locationEvent.error + " [error code " + locationEvent.code + "]";
-                Ti.API.warn("view.needhelp1 :: gpsCallBack() got an error response: " + gps_display);
-                txtLocation.value = gps_display;
+                strLocation     = locationEvent.error + " [error code " + locationEvent.code + "]";
+                Ti.API.warn("view.needhelp1 :: fnGeoHandler() got an error response: " + strLocation);
+                txtLocation.value = strLocation;
                 return;
             }
             var lat = locationEvent.coords.latitude, lng = locationEvent.coords.longitude;
-            gps_display     = lat + ", " + lng;
-            Ti.API.debug("view.needhelp1 :: gpsCallBack() got response: " + gps_display);
-            txtLocation.value = gps_display;
+            strLocation     = lat + ", " + lng;
+            Ti.API.debug("view.needhelp1 :: fnGeoHandler() got response: " + strLocation);
+            txtLocation.value = strLocation;
         };
         // actually perform the Geolocation and store it
-        Ti.Geolocation.getCurrentPosition(gpsCallBack);
+        Ti.Geolocation.getCurrentPosition(fnGeoHandler);
 
         btnNext.addEventListener('click', function() {
             controller.next(txtLocation.value);

@@ -16,12 +16,13 @@ mcv.create('view', 'needhelp4', {
 
         // HEAD
         // user instructions
-        var label = Ti.UI.createLabel({text:"How much are you willing to pay?",
+        var lblInstructions = Ti.UI.createLabel({text:"How much are you willing to pay?",
                                                                                 height: 'auto',
                                                                                 top:0,
                                                                                 font:{fontSize:24}
         });
-        viewHead.add(label);
+        viewHead.add(lblInstructions);
+
 
     
         // BODY
@@ -31,7 +32,7 @@ mcv.create('view', 'needhelp4', {
             value:10,
         });
          // reward amount display field
-        var labelSlider = Ti.UI.createLabel({
+        var lblSlider = Ti.UI.createLabel({
             height: 120,
             borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
             borderRadius:10,
@@ -43,31 +44,32 @@ mcv.create('view', 'needhelp4', {
         });
         // slider event handler
         sliderAmount.addEventListener('change', function() {
-            labelSlider.text = '$' + Math.round(sliderAmount.value.toString());
+            lblSlider.text = '$' + Math.round(sliderAmount.value.toString());
         });
-        var labelSliderCaption = Ti.UI.createLabel({
+        var lblSliderCaption = Ti.UI.createLabel({
             text:"You can offer from zero to 100",
             height: 40,
             font:{fontSize:10},
         });
-        viewBody.add(labelSlider, labelSliderCaption, sliderAmount);
+        viewBody.add(lblSlider, lblSliderCaption, sliderAmount);
+
 
 
         // FOOT
         // submit button
-        var buttonSubmit = Ti.UI.createButton({
+        var btnSubmit = Ti.UI.createButton({
             title:"Send for Help",
             height:50,
             font:{fontSize:24, fontWeight:'bold'},
             bottom:0
         });
         // setup the next button click event handler
-        buttonSubmit.addEventListener('click', function() {
+        btnSubmit.addEventListener('click', function() {
             Titanium.API.debug("button click event...");
             App.User.helpAmount = sliderAmount.value;
             controller.next(win);
         });
-        viewFoot.add(buttonSubmit);
+        viewFoot.add(btnSubmit);
         win.add(viewHead,viewBody,viewFoot);
     },
 });

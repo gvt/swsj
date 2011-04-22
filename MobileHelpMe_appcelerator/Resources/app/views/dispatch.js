@@ -10,7 +10,7 @@ mcv.create('view', 'dispatch', {
         // create a view and 2 buttons
         //
         var view = Ti.UI.createView();
-        var button_need_help = Titanium.UI.createButton({
+        var btnNeedHelp = Titanium.UI.createButton({
             title:"I need help!",
             height:100,
             width:220,
@@ -18,7 +18,7 @@ mcv.create('view', 'dispatch', {
             backgroundColor:'red',
             font:{fontSize:36}
         });
-        var button_can_help = Titanium.UI.createButton({
+        var btnCanHelp = Titanium.UI.createButton({
             title:"I can help.",
             height:100,
             width:220,
@@ -28,15 +28,15 @@ mcv.create('view', 'dispatch', {
         });
 
         // setup the button click handlers
-        button_need_help.addEventListener('click', function() {
-            controller.userNeedsHelp(win);
+        btnNeedHelp.addEventListener('click', function() {
+            controller.userNeedsHelp();
         });
-        button_can_help.addEventListener('click', function() {
-            controller.userCanHelp(win);
+        btnCanHelp.addEventListener('click', function() {
+            controller.userCanHelp();
         });
 
         // add the components, show the view
-        view.add(button_need_help, button_can_help);
+        view.add(btnNeedHelp, btnCanHelp);
         win .add(view);
     },
 

@@ -12,6 +12,12 @@
     Ti.include('test/models/test_task_request.js');
     // views
     Ti.include('test/views/test_signin.js');
+    Ti.include('test/views/test_dispatch.js');
+    Ti.include('test/views/test_needhelp1.js');
+    Ti.include('test/views/test_needhelp2.js');
+    Ti.include('test/views/test_needhelp3.js');
+    Ti.include('test/views/test_needhelp4.js');
+    Ti.include('test/views/test_needhelpend.js');
     
 	
 	jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());

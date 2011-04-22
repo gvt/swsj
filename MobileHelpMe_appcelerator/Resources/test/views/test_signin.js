@@ -1,6 +1,6 @@
 (function(){
 	
-	describe('signin.js', function() {
+	describe('signin view', function() {
 
         it("exists", function() {
             expect(mcv.v.signin).toBeDefined();
