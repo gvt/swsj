@@ -65,9 +65,7 @@ mcv.create('view', 'needhelp4', {
         });
         // setup the next button click event handler
         btnSubmit.addEventListener('click', function() {
-            Titanium.API.debug("button click event...");
-            App.User.helpAmount = sliderAmount.value;
-            controller.next(win);
+            controller.next( Math.round(sliderAmount.value.toString()) );
         });
         viewFoot.add(btnSubmit);
         win.add(viewHead,viewBody,viewFoot);

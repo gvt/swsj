@@ -39,7 +39,7 @@ mcv.create('view', 'needhelp1', {
             }
             var lat = locationEvent.coords.latitude, lng = locationEvent.coords.longitude;
             strLocation     = lat + ", " + lng;
-            Ti.API.debug("view.needhelp1 :: fnGeoHandler() got response: " + strLocation);
+            Ti.API.debug("view.needhelp1 :: fnGeoHandler() got response: \"" + strLocation + "\"");
             txtLocation.value = strLocation;
         };
         // actually perform the Geolocation and store it
