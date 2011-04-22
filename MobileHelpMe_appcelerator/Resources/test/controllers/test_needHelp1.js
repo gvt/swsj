@@ -2,20 +2,38 @@
 	
 	Ti.include('/app/controllers/needHelp1.js');
 	
-	describe('needHelp1.js', function() {
+	describe('needhelp1 controller', function() {
 
-        it("creates a window", function() {
-            expect(win).not.toBeNull();
+	    beforeEach(function() {
+	        c = mcv.c.needhelp1;
+            expect(c).toBeDefined();
+            expect(c).not.toBeNull
+            ();
+	    });
+
+        describe('next', function() {
+
+            it("exists", function() {
+                expect(c.next).toBeDefined();
+            });
+
+            it("passes to expected next controller", function() {
+                spyOn(c,'n');
+
+                c.next();
+                expect(c.n).toHaveBeenCalledWith(mcv.c.needhelp2);
+            });
+
+            xit("captures user input", function() {
+                spyOn(c,'n');
+
+                var tr = {blah:"..."};
+                c.next();
+                expect(c.n).toHaveBeenCalledWith(mcv.c.needhelp2);
+            });
+
         });
 
-        it("defines function win.render", function() {
-            expect(win.render).toBeDefined();
-        });
-        
-        it("defines function win.nextStep", function() {
-            expect(win.nextStep).toBeDefined();
-        });
-        
 	});
-	
+
 })();
