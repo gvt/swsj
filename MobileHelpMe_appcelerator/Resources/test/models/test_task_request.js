@@ -60,9 +60,10 @@
                 spyOn(xhr_mock,'send');
 
                 expect(tr.save(xhr_mock)).toBe(true);
-
+                var json = JSON.stringify(tr.attributes);
+                Ti.API.info("json=" + json);
                 expect(xhr_mock.open).toHaveBeenCalled();
-                expect(xhr_mock.send).toHaveBeenCalled();
+                expect(xhr_mock.send).toHaveBeenCalledWith(json);
             });
         });
 

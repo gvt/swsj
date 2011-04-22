@@ -48,7 +48,12 @@ mcv.create('model', 'TaskRequest', {
         };
         try {
             xhr.open("POST","http://localhost:3000/task_requests.js");
-            xhr.send(this.attributes);
+
+            // xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            xhr.setRequestHeader("content-type", "application/json");
+            var json = JSON.stringify({task_request:this.attributes});
+
+            xhr.send(json);
         } catch(e) {
             Ti.API.error('TaskRequest.save :: exception encountered: ' + e.message);
             return false;
