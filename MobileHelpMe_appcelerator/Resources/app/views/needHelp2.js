@@ -18,16 +18,15 @@ mcv.create('view', 'needhelp2', {
         });
         var tab = Ti.UI.createTableView({
             top:170,
-            data:TaskRequest.categories,
+            data: mcv.m.TaskRequest.categories,
             rowHeight: 40,
-            height:    40 * TaskRequest.categories.length,
+            height:    40 * mcv.m.TaskRequest.categories.length,
             font:{fontSize:20}
         });
     
         tab.addEventListener('click', function(click_event) {
-            Titanium.API.debug("tableView click event... [" + click_event.row.title + "]");
-            App.User.helpCategoryId = click_event.row.id;
-            controller.next(win);
+            Titanium.API.debug("view.needhelp2 :: tableView click event.. {title:" + click_event.row.title + ", id:"+ click_event.row.id +"}");
+            controller.next(click_event.row.id);
         });
 
         view.add(label, tab);

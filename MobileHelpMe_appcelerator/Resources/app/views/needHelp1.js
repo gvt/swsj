@@ -20,8 +20,8 @@ mcv.create('view', 'needhelp1', {
         });
         var btnNext = Ti.UI.createButton({
             title:"Next",
-            bottom:20,
-            right:20,
+            // bottom:20,
+            // right:20,
             width:150,
             height:35
         });
@@ -31,24 +31,22 @@ mcv.create('view', 'needhelp1', {
         Ti.Geolocation.purpose = "Need your location to fulfill your help request"; // required
         var gpsCallBack = function(locationEvent)
         {
-            Ti.API.debug("gpsCallBack...");
-        
-            if (locationEvent.success === false) {
+            if (!locationEvent.success) {
                 gps_display     = locationEvent.error + " [error code " + locationEvent.code + "]";
+                Ti.API.warn("view.needhelp1 :: gpsCallBack() got an error response: " + gps_display);
                 txtLocation.value = gps_display;
                 return;
             }
-
             var lat = locationEvent.coords.latitude, lng = locationEvent.coords.longitude;
             gps_display     = lat + ", " + lng;
+            Ti.API.debug("view.needhelp1 :: gpsCallBack() got response: " + gps_display);
             txtLocation.value = gps_display;
         };
         // actually perform the Geolocation and store it
         Ti.Geolocation.getCurrentPosition(gpsCallBack);
 
         btnNext.addEventListener('click', function() {
-            Titanium.API.debug("button click event...");
-            controller.next(win);
+            controller.next(txtLocation.value);
         });
 
         win.add(view);

@@ -8,7 +8,7 @@ mcv.create('view', 'signin', {
     {
         if (controller.isAlreadySignedIn()) {
 
-    	    Ti.API.info("view.signin :: render() called: user isAlreadySignedIn");
+    	    Ti.API.debug("view.signin :: render() called: user isAlreadySignedIn");
 
             var lblFeedback = Titanium.UI.createLabel({
                 text:"You are signed in.",
@@ -31,7 +31,7 @@ mcv.create('view', 'signin', {
             return;
         }
 
-	    Ti.API.info("view.signin :: render() called: user not signed in");
+	    Ti.API.debug("view.signin :: render() called: user not signed in");
 
         win.title = "Sign In";
         //
