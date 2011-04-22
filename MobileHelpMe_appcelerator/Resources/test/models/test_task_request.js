@@ -36,11 +36,12 @@
             });
 
             it("works", function() {
-                opts = {category_id:'qwerty cat', description:'functional desc here', location:'37.77018737792969, -122.4037094116211'};
+                opts = {category_id:'qwerty cat', description:'functional desc here', location:'37.77018737792969, -122.4037094116211', amount:11};
                 tr   = m.build(opts);
                 expect(tr.attributes.category_id).toEqual(opts.category_id);
                 expect(tr.attributes.description).toEqual(opts.description);
                 expect(tr.attributes.location   ).toEqual(opts.location   );
+                expect(tr.attributes.amount     ).toEqual(opts.amount     );
                 expect(tr.isNewRecord()         ).toEqual(true            );
             });
         });

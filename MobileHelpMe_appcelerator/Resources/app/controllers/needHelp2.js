@@ -7,7 +7,7 @@ mcv.create('controller', 'needhelp2', {
             App.d.taskRequest.attributes.category_id = category_id;
             Ti.API.info("controller.needhelp2 :: next(): taskRequest.category_id set to " + App.d.taskRequest.attributes.category_id);
         } else {
-            Ti.API.warn("controller.needhelp1 :: next(): did not set taskRequest.category_id, [App.d.taskRequest="+ App.d.taskRequest +", category_id="+ category_id +"]")
+            Ti.API.warn("controller.needhelp2 :: next(): did not set taskRequest.category_id, [App.d.taskRequest="+ App.d.taskRequest +", category_id="+ category_id +"]")
         }
         // on to the next
         this.n(mcv.c.needhelp3);

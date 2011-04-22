@@ -26,6 +26,7 @@ mcv.create('model', 'TaskRequest', {
         this.attributes.category_id = opts.category_id;
         this.attributes.description = opts.description;
         this.attributes.location    = opts.location   ;
+        this.attributes.amount      = opts.amount     ;
         return this;
     },
 

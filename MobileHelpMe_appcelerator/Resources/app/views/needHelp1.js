@@ -33,7 +33,7 @@ mcv.create('view', 'needhelp1', {
         {
             if (!locationEvent.success) {
                 strLocation     = locationEvent.error + " [error code " + locationEvent.code + "]";
-                Ti.API.warn("view.needhelp1 :: fnGeoHandler() got an error response: " + strLocation);
+                Ti.API.warn("view.needhelp1 :: fnGeoHandler() got an error response: \"" + strLocation + "\"");
                 txtLocation.value = strLocation;
                 return;
             }

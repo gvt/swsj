@@ -8,6 +8,8 @@
     Ti.include('test/controllers/test_dispatch.js');
     Ti.include('test/controllers/test_needHelp1.js');
     Ti.include('test/controllers/test_needHelp2.js');
+    Ti.include('test/controllers/test_needHelp3.js');
+    Ti.include('test/controllers/test_needHelp4.js');
     // models
     Ti.include('test/models/test_task_request.js');
     // views
